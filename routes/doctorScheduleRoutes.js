@@ -13,6 +13,7 @@ router.get("/doctor-schedule/:doctorId", async (req, res) => {
         }
 
         res.json({
+            availabledoctor : doctor.name,
             availableDates: doctor.availableDates, // Ensure this field exists in your Doctor schema
             availableTime: doctor.availableTime,
         });

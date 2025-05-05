@@ -1,65 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const Doctor = require("../models/Doctor");
-const bcrypt = require("bcrypt");
 const Appointment = require("../models/Appointment");
-// const Doctor = require("./models/Doctor");
-//const flashAndSession = require("./middleware/flashAndSession");
+const multer = require('multer');
+const fs = require('fs');
+const { storage } = require('../cloudConfig');
+const { isAuthenticated, isReceptionist,isDoctor } = require("../middleware/middleware");
 if(process.env.NODE_KEY != "production"){
     require('dotenv').config();
 }
 
-router.get("/register", (req, res) => {
-    res.render("register.ejs");
-});
-
-router.post("/register", async (req, res) => {
-    try {
-        const { name, email, password, department } = req.body;
-
-        const existingDoctor = await Doctor.findOne({ email });
-        if (existingDoctor) {
-            req.flash("error", "Doctor already registered");
-            return res.redirect("/register");
-        }
-
-        const doctor = new Doctor({ name, email, password, department });
-        await doctor.save();
-
-        req.flash("success", "Doctor registered successfully");
-        res.redirect("/login");
-    } catch (error) {
-        console.error("Registration Error:", error);
-        req.flash("error", "Registration failed");
-        res.redirect("/register");
-    }
-});
-
-
-// router.get("/mainLogin", (req, res) =>{
-//     res.render("mainLogin.ejs");
-// })
-
-// router.post("/mainLogin", (req, res) => {
-//     try {
-//         const { password } = req.body; // Retrieve password from the request body
-//         if (password === process.env.SECRET_KEY) {
-//             return res.redirect("/register");
-//         } else {
-//             req.flash("error", "Invalid Password");
-//             return res.redirect("/mainLogin");
-//         }
-//     } catch (error) {
-//         console.error("Login Error:", error);
-//         req.flash("error", "Login failed");
-//         res.redirect("/mainLogin");
-//     }
-// });
-
-router.get("/access", (req, res) => {
-    res.render("access.ejs", { messages: req.flash() });
-});
-
+// Initialize multer
+const upload = multer({ storage });
 
 router.post("/access", async (req, res) => {
   
@@ -67,15 +19,48 @@ router.post("/access", async (req, res) => {
     const { accessCode } = req.body;
 
     if (accessCode === process.env.SECRET_kEY) {
+        req.session.user = { type: 'doctor' }; 
         return res.redirect("/register"); // Doctor signup form
     } else if (accessCode === process.env.SECRET_REC) {
+        req.session.user = { type: 'receptionist' };
         const appointments = await Appointment.find().populate("doctor");
-        return res.render("reception-dashboard.ejs", { appointments: appointments });
+        return res.render("receptionlistlink/reception-dashboard.ejs", { appointments: appointments });
     } else {
         req.flash("error", "Invalid access code");
         return res.redirect("/access");
     }
 });
+
+
+router.get("/access", (req, res) => {
+    res.render("access.ejs", { messages: req.flash() });
+});
+
+
+router.get("/register", isDoctor , (req, res) => {
+    res.render("register.ejs");
+});
+// Adjust according to your directory structure
+
+
+router.post('/register', upload.single('image'), async (req, res) => {
+    const { name, email, password, department, specialization, degrees, description } = req.body;
+  
+    const newDoctor = new Doctor({
+      name,
+      email,
+      password, // hash if needed
+      department,
+      specialization,
+      degrees,
+      description,
+      imageUrl: req.file ? req.file.path : '' // Cloudinary URL
+    });
+  
+    await newDoctor.save();
+    res.redirect('/dashboard'); // or wherever you list doctors
+  });
+
 
 router.get("/login", (req, res) => {
     res.render("login.ejs");

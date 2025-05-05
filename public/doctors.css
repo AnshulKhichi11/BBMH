@@ -21,11 +21,13 @@
     text-align: center;
     padding: 2vh 2vw;
 }
-
+h4,p,a{
+    color: white;
+}
 
 .doc p {
+    color: white;
     font-size: 2.5vh;
-    color: #0c2873;
 }
 .col{
     display: flex;
@@ -37,7 +39,10 @@
     width: 20vw;
 }
 .card-body{
-    background-color: #98e4ee;
+    background-color: #1a2b4f;
+}
+.card-body h4{
+    color: white;
 }
 
 

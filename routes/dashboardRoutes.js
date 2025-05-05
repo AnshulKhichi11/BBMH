@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Doctor = require("../models/Doctor");
-const { isAuthenticated } = require("../middleware/middleware");
+const { isAuthenticated, isReceptionist,isDoctor } = require("../middleware/middleware");
 
 // Dashboard route
 router.get("/dashboard", isAuthenticated, async (req, res) => {

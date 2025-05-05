@@ -1,6 +1,6 @@
 
 .header-top {
-    background-color: #00796b;
+    background-color: #1a2b4f;
     color: white;
     text-align: center;
     padding: 2vh 0;
@@ -17,7 +17,7 @@
 
 .header-main h1 {
     margin: 0;
-    color: #00796b;
+    color: #1a2b4f;
 }
 
 
@@ -67,7 +67,7 @@
 }
 
 .blog-card h3 {
-    color: #00796b;
+    color: #1a2b4f;
     font-size: 3vh;
     margin-top: 2vh;
 }
@@ -82,20 +82,20 @@
     margin-top: 2vh;
     text-decoration: none;
     color: white;
-    background-color: #00796b;
+    background-color: #1a2b4f;
     padding: 1.6vh 2.4vw;
     border-radius: 1vh;
 }
 
 .blog-card a:hover {
-    background-color: #005f56;
+    background-color: #1a2b4f;
 }
 
 /* Footer */
 footer {
     text-align: center;
     padding: 4vh 2vw;
-    background-color: #00796b;
+    background-color: #1a2b4f;
     color: white;
 }
 

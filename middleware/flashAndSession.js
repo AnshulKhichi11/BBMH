@@ -1,11 +1,14 @@
 const session = require("express-session");
 const flash = require("connect-flash");
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
+}
 
 const flashAndSession = (app) => {
     // Session configuration
     app.use(
         session({
-            secret: "yourSecretKey",
+            secret: process.env.SESSION_SECRET,
             resave: false,
             saveUninitialized: true,
             cookie: { secure: false }, // Set to true if using HTTPS

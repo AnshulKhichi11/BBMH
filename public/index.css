@@ -5,7 +5,7 @@ body {
 
 .contact {
     height: auto;
-    background-color: #1FB8A1;
+    background-color: #1a2b4f;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -367,6 +367,12 @@ body {
   }
 
 
+  .custom-video {
+    top: 1vh;
+    height: 600px; /* Adjust the height as needed */
+    object-fit:fill; /* Ensures the video scales properly */
+}
+
   .carousel-item img {
     height: 670px;
     width: 100%;
@@ -554,16 +560,56 @@ body {
     float: left;
   }
 }
+#toggleBtn2 {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: rgba(233, 15, 15, 0.73);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 3px 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#toggleBtn2:hover {
+    background-color:  rgba(233, 15, 15, 0.699);
+    transform: scale(1.1);
+}
+
+#toggleBtn2:active {
+    transform: scale(0.9);
+}
+
+@media (max-width: 768px) {
+    #toggleBtn2 {
+        bottom: 70px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #toggleBtn2 {
+        bottom: 80px;
+        right: 20px;
+    }
+}
 
 #toggleBtn1 {
     position: fixed;
-    bottom: 20px;
+    bottom: 30px;
     right: 20px;
     background-color: #25d366;
     color: white;
     font-size: 18px;
     font-weight: 600;
-    padding: 8px 38px;
+    padding: 3px 38px;
     border-radius: 50px;
     cursor: pointer;
     display: flex;
@@ -574,16 +620,15 @@ body {
     border: none;
     z-index: 9999;
     overflow: hidden;
-    position: fixed;
 }
 
 #toggleBtn1:active {
-    transform: translateY(1px); /* Push down on click */
+    transform: translateY(2px); /* Push down on click */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .fa-whatsapp{
-    font-size: 5vh;
+    font-size: 4vh;
 }
 
 @keyframes pulse {
@@ -619,12 +664,18 @@ body {
 }
 
 @media (max-width: 600px){
+    .custom-video {
+        top: 1vh;
+        height: 300px; /* Adjust the height as needed */
+        object-fit:fill; /* Ensures the video scales properly */
+    }
     .fa-whatsapp{
-        font-size: 3vh;
+        font-size: 4vh;
     }
 
     #toggleBtn1{
-        padding: 8px 28px;
+        right: 15px;
+        padding: 4px 20px;
     }
     
     .overview{
@@ -704,7 +755,7 @@ body {
     margin-left: 8vw;
     margin-top: 15vh;
     height: 10vh;
-    color: red;
+    color: #d4a017;
 }
 
 .cards h3, .cards p {
@@ -768,7 +819,7 @@ body {
 .box{
     height: 85vh;
     width: 100%;
-    background-color: rgba(232, 232, 232, 0.3);
+    background-color: #eff3f8;
     display: flex;
     padding: 4vh 0;
 }
@@ -781,6 +832,7 @@ body {
     margin-left: 1vh;
 }
 .disc h4{
+    color: #1a2b4f;
     padding: 2vh 1vh;
 }
 .disc p{
@@ -796,10 +848,13 @@ body {
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
 }
+.lists h3{
+    color: #1a2b4f;
+}
 .lists span i{
     padding-right: 2vh;
     padding-left: 2vh;
-    color: red;
+    color: #d4a017;
 }
 
 @media (max-width: 600px) {
@@ -853,6 +908,10 @@ body {
     width: 95%;
 }
 
+.doctors h3{
+    color: #1a2b4f;
+}
+
 
 .slide-button{
     top:55%;
@@ -899,7 +958,7 @@ scrollbar-width: none;
 }
 
 .image-item{
-    border: 3px solid #00A877;
+    border: 3px solid #1a2b4f;
     border-radius:2vw;
 }
 
@@ -998,7 +1057,7 @@ scrollbar-width: none;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(232, 232, 232, 0.3);
+    background-color: #eff3f8;
 }
 
 #main-containt .card {
@@ -1013,7 +1072,7 @@ scrollbar-width: none;
     height: 18vh;
     width: 10vw;
     margin-left: 8vw;
-    background-color: #84d3da;
+    background-color: #e6edff;
     padding: 1vw;
     border-radius: 50%;
     margin-top: 2vh;
@@ -1026,7 +1085,7 @@ scrollbar-width: none;
     text-decoration: none;
     margin-bottom: 1vh;
     margin-top: 0.5vw;
-    color: #1FB8A1;
+    color: #1a2b4f;
 }
 .card:hover {
     box-shadow: 0.5vh 0.5vw 3vh rgb(146, 146, 143);
@@ -1080,6 +1139,8 @@ scrollbar-width: none;
     font-size: 1vw;
     opacity: 0.8;
 }
+
+
 
 @media (max-width: 600px){
     .service{
@@ -1188,7 +1249,7 @@ scrollbar-width: none;
     padding: 2vh 2vw;
 }
 .faq-container h1{
-    color: dodgerblue;
+    color: #1a2b4f;
     margin-bottom: 8vh;
 }
 
@@ -1267,8 +1328,9 @@ scrollbar-width: none;
 
 
 .footer{
+    
     height: 80vh;
-    background-color:#e7e8e9;
+    background-color:#142345;
     border: 2px solid black;
     padding: 5vh  5vh 0 0;
     overflow: hidden;
@@ -1276,6 +1338,7 @@ scrollbar-width: none;
 }
 .footer h3{
     text-align: center;
+    color: white;
 }
 .moving-div{
     display: flex; 
@@ -1285,20 +1348,23 @@ scrollbar-width: none;
 }
 .move img{
     height: 15vh;
-    border: 1px solid rgb(8, 228, 232);
+    border: 1px solid #1a2b4f;
     background-color: white;
     width: 15vw;
 }
 .link{
+    color: white;
     display: flex;
     /* align-items: center; */
     justify-content: space-evenly;
     margin-top: 6vw;
 }
 .link p{
+    color: white;
     font-size: larger;
 }
 .link1{
+    color: white;
     width: 20vw;
     text-align: center;
 }
@@ -1306,8 +1372,12 @@ scrollbar-width: none;
     width:15vw;
 }
 .link2 a{
+
     text-decoration: none;
-    color: #000000;
+    color: white;
+}
+.footer p{
+    color: white;
 }
 .rights{
     width: 100%;
@@ -1835,7 +1905,3 @@ scrollbar-width: none;
         font-size: 3.5vw;
     }
 }
-
-
-
-

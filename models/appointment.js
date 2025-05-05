@@ -19,7 +19,6 @@ const appointmentSchema = new Schema({
     },
     disease: {
         type: String,
-        required: true,
     },
     phone: {
         type: Number,
@@ -33,36 +32,56 @@ const appointmentSchema = new Schema({
         }
     },
     availableDates: { 
-        type: [Date], // ✅ Changed to an array of dates
+        type: [Date],
         required: true,
     },
     availableTime: {
         type: String,
         required: function() {
-            return !this.customTime; // ✅ Required only if customTime is not provided
+            return !this.customTime;
         }
     },
     customTime: {
         type: String,
         required: function() {
-            return !this.availableTime; // ✅ Required only if availableTime is not provided
+            return !this.availableTime; 
         }
     },
-    gender: { // ✅ Fixed "Gender" to "gender"
+    gender: { 
         type: String,
-        required: true, // ✅ Prevent invalid values
+        required: true, 
     },
     age: {
         type: Number,
         required: true,
         min: 0,
     },
+    approved: {
+        type: Boolean,
+        default: false
+    },
+    approved: {
+        type: Boolean,
+        default: false
+    },
+    approvedBy: {
+        type: String,
+        default: null
+    },
+    approvedAt: {
+        type: Date,
+        default: null
+    },
     rating: {
         type: Number,
         default: null,
         min: 1,
         max: 5,
-    }
+    },
+    userToken: {
+        type: String, // Store the unique token
+        required: true,
+    },
 }, { timestamps: true });
 
 const Appointment = mongoose.model("Appointment", appointmentSchema);

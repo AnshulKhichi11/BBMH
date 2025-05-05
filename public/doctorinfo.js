@@ -9,18 +9,24 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// gsap.from(".heading h2", {
-//     // transform : "translateX(-100%)",
-//     scale:0,
-//     duration:0.1,
-//     stagger:0.1,
-//     repeat:-1
-// })
-// gsap.to(".heading h2", {
-//     // // transform : "translateX(-100%)",
-//     scale:0,
-//     duration:1,
-//     stagger:1,
-//     yoyo:1,
-// })
+//--- GSAP Contact Header ---
+function initContactAnim() {
+  if (typeof gsap === "undefined") return;
+
+  gsap.from(".head h2",{
+  duration:0.7,
+  opacity:0,
+  x : -1000,
+  stagger:1,
+});
+
+//   gsap.from(".small h2", {
+//     duration: 0.6,
+//     x: -500,
+//   });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    initContactAnim();
+  });
 
